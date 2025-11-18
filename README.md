@@ -4,17 +4,13 @@
 
 # **R-SIT v1 — Robotic Social Interaction Taxonomy**
 
-**R-SIT** (Robotic Social Interaction Taxonomy) is a structured, extensible taxonomy designed for representing **human social interactions as perceived from a robot’s point of view**.
-It provides a unified vocabulary and conceptual framework for building datasets, benchmarks, and models that perform **robot-centric social scene understanding**.
-
-This repository hosts the **first public version (v1)** of the taxonomy.
-
----
-
 ## 🔍 **What is R-SIT?**
 
-R-SIT defines a set of **interpretable, perceptually grounded dimensions** that describe a social situation from the perspective of a robot-mounted camera.
-It focuses exclusively on features that can be **visually inferred** through pose, proximity, gaze, facial expression, group structure, and contextual cues.
+**R-SIT (Robotic Social Interaction Taxonomy)** is a structured, extensible taxonomy for representing human social interactions from a robot’s point of view. It provides a unified vocabulary and conceptual framework for building datasets, benchmarks, and models that perform robot-centric social scene understanding.
+
+This repository contains the first public release (v1) of the taxonomy.
+
+R-SIT defines a set of interpretable, perceptually grounded dimensions describing social situations as seen by a robot-mounted camera, focusing exclusively on features that can be visually inferred—including pose, proximity, gaze, facial expression, group structure, and contextual cues.
 
 ---
 
