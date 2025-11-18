@@ -98,7 +98,7 @@ R-SIT/
 ```bibtex
 @misc{pallonetto2025rsit,
   title={R-SIT: Robotic Social Interaction Taxonomy},
-  author={Pallonetto, Luca},
+  author={Pallonetto, Luca and Lemaignan, Severin},
   year={2025},
   publisher={GitHub},
   howpublished={\url{https://github.com/YOUR-USERNAME/R-SIT}}
