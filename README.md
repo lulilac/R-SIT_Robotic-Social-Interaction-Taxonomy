@@ -101,7 +101,7 @@ R-SIT/
   author={Pallonetto, Luca and Lemaignan, Severin},
   year={2025},
   publisher={GitHub},
-  howpublished={\url{https://github.com/YOUR-USERNAME/R-SIT}}
+  howpublished={\url{https://github.com/lulilac/R-SIT}}
 }
 ```
 
