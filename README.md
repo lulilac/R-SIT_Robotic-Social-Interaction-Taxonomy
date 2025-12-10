@@ -1,95 +1,108 @@
-<p align="center">
-  <img src="assets/logo/R-SIT_v1_logo.png" width="200" alt="R-SIT Logo"/>
-</p>
+# 📘 R-SIT Ontology
 
-# **R-SIT v1 — Robotic Social Interaction Taxonomy**
+### *Robotic Social Interaction Taxonomy*
 
-## 🔍 **What is R-SIT?**
-
-**R-SIT (Robotic Social Interaction Taxonomy)** is a structured, extensible taxonomy for representing human social interactions from a robot’s point of view. It provides a unified vocabulary and conceptual framework for building datasets, benchmarks, and models that perform robot-centric social scene understanding.
-
-This repository contains the first public release (v1) of the taxonomy.
-
-R-SIT defines a set of interpretable, perceptually grounded dimensions describing social situations as seen by a robot-mounted camera, focusing exclusively on features that can be visually inferred—including pose, proximity, gaze, facial expression, group structure, and contextual cues.
+R-SIT is a lightweight ontology for describing **social situations**, **agents**, **environments**, and **interaction dynamics**.
+It is designed for social scene understanding, dataset annotation, and human–robot interaction research.
 
 ---
 
-## 🧠 **Why create a new taxonomy?**
+## 🧩 1. Core Concepts
 
-Despite extensive research in social psychology and HRI, **no existing taxonomy describes social interactions specifically for robot perception**.
-Robots operate under unique constraints:
+R-SIT models three main types of entities:
 
-* monocular or RGB-D cameras
-* partial views / occlusions
-* limited field of view
-* real-time inference requirements
-* absence of linguistic context
+* **SocialSituation** – the social scene or event
+* **Agent** – any human participant
+* **Location** – where the situation occurs
 
-R-SIT fills this gap by offering a taxonomy that is:
-
-* **grounded in psychological theory**,
-* **designed for robot vision**,
-* **extensible for future research**,
-* **simple enough for dataset generation**,
-* **structured for machine learning pipelines**.
-
+These are grouped under the generic class **RSITEntity**.
 
 ---
 
-## 📚 **Scientific Foundations**
+## 🎛️ 2. Dimensions
 
-R-SIT v1 is grounded in a multidisciplinary set of theories and empirical findings:
+Dimensions describe attributes of situations, agents, and environments.
 
-### **F-Formation & Spatial Interaction**
+### **Environment Dimensions**
 
-* Kendon, A. *Conducting Interaction*
-* Setti et al. (2015). *F-Formation Detection*
-* Hall, E. *The Hidden Dimension* (proxemics)
+* **PhysicalEnvironmentType:** `Indoor`, `Outdoor`
+* **Formality:** `Formal`, `Informal`
 
-### **Robot-Centric Perception**
+### **Situation Dimensions**
 
-* Webb, N., Giuliani, M., & Lemaignan, S. *Measuring Visual Social Engagement from Proxemics and Gaze*
-* Repiso et al. (2020). *Adaptive Social Robot Navigation*
+* **Cardinality:** `Solo`, `Dyad_1to1`, `Triad_1to2`, `SmallGroup_N`
+* **CrowdContext:** `Crowded`, `NotCrowded`
+* **SocialRelationType:** `PeerRelation`, `StrangerRelation`, `AdultChildRelation`
+* **InteractionType:**
 
-### **Social Cognition & Commonsense Reasoning**
+  * Goal-directed: `Cooperative`, `Competitive`, `Persuasive`
+  * Norm-conformity: `Conforming`, `Observational`
+* **CommunicationMode:** `Verbal`, `Nonverbal`
+* **InterdependenceLevel:** `HighInterdependence`, `LowInterdependence`
+* **NonverbalCue:** `ProximityClose`, `ProximityFar`, `EyeContact`, `BodyOrientation`
+* **EmotionalValence:** `Positive`, `Neutral`, `Negative`
+* **EngagementLevel:** uses ORO individuals (`engaged`, `engaging`, `disengaging`)
 
-* Sap et al. (2019). *Social IQa Dataset*
-* Bartlett et al. (2019). *Inferring Internal States from Movement*
+### **Agent Dimensions**
 
-### **General Social & Cognitive Psychology**
-
-* Goffman, E. *The Interaction Order*
-* Fiske, A. *Relational Models Theory*
-
-These works collectively justify the dimensions selected for R-SIT v1.
+* **SocialRole:** e.g., `PeerPeerRole`, `StrangerStrangerRole`
+* **SocialHierarchy:** `Dominant`, `Equal`, `Submissive`
 
 ---
 
-## 📁 **Repository Structure**
+## 🏠 3. Environment Instances
 
-```
-R-SIT/
-│
-├── README.md
-├── taxonomy/
-│   ├── R-SIT_v1.json
-│   └── R-SIT_v1.md
-│
-├── sources/
-│   ├── F-Formation.pdf
-│   ├── Measuring_Visual_Social_Engagement.pdf
-│   ├── SOCIAL_IQA.pdf
-│   └── reference_list.md
-│
-├── dataset_spec/
-│   ├── combinations_v1.json
-│   └── annotation_guidelines.md
-│
-└── examples/
-    ├── sample_annotations.json
-    └── images/
+Concrete places are modeled as **individuals**, not classes:
+
+* `KitchenEnvironment`
+* `CafeteriaEnvironment`
+* `LivingRoomEnvironment`
+* `CoworkingSpaceEnvironment`
+* `OfficeRoomEnvironment`
+* `MeetingRoomEnvironment`
+* `HospitalOfficeEnvironment`
+* `StreetSidewalkEnvironment`
+* `PublicParkEnvironment`
+
+Each is annotated with:
+
+```ttl
+:hasPhysicalType Indoor/Outdoor
+:hasFormality Formal/Informal
 ```
 
+---
+
+## 🔗 4. Key Object Properties
+
+* `hasLocation`
+* `hasPhysicalType`
+* `hasFormality`
+* `hasCardinality`
+* `hasCrowdContext`
+* `hasInteractionType`
+* `hasCommunicationMode`
+* `hasInterdependenceLevel`
+* `hasNonverbalCue`
+* `hasEmotionalValence`
+* `hasEngagementLevel`
+* `hasSocialRole`
+* `hasHierarchyStatus`
+
+---
+
+## 📌 5. Example Annotation
+
+```ttl
+:Situation_Example a :SocialSituation ;
+    :hasLocation :CafeteriaEnvironment ;
+    :hasCardinality :Triad_1to2 ;
+    :hasInteractionType :CooperativeInteraction ;
+    :hasCommunicationMode :NonverbalCommunication ;
+    :hasNonverbalCue :ProximityClose ;
+    :hasEmotionalValence :PositiveValence ;
+    :hasEngagementLevel oro:engaged .
+```
 
 ---
 
