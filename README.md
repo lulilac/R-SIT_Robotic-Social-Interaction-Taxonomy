@@ -2,26 +2,27 @@
 
 ### *Robotic Social Interaction Taxonomy*
 
-R-SIT is a lightweight ontology for describing **social situations**, **agents**, **environments**, and **interaction dynamics**.
+R-SIT is a lightweight ontology for representing **social situations**, **agents**, **environments**, and **interaction dynamics**.
 It is designed for social scene understanding, dataset annotation, and human–robot interaction research.
 
 ---
 
-## 🧩 1. Core Concepts
+## 🧩 1. Core Entities
 
-R-SIT models three main types of entities:
+These classes represent the *things that exist* in a social scene:
 
-* **SocialSituation** – the social scene or event
+* **SocialSituation** – the social event or context
 * **Agent** – any human participant
-* **Location** – where the situation occurs
+* **Environment / Location** – the place where the situation occurs
 
-These are grouped under the generic class **RSITEntity**.
+All core entities descend from **RSITEntity**.
 
 ---
 
 ## 🎛️ 2. Dimensions
 
-Dimensions describe attributes of situations, agents, and environments.
+Dimensions describe properties of situations, locations, and agents.
+Each dimension is independent, allowing flexible annotation.
 
 ### **Environment Dimensions**
 
@@ -41,22 +42,22 @@ Dimensions describe attributes of situations, agents, and environments.
 * **InterdependenceLevel:** `HighInterdependence`, `LowInterdependence`
 * **NonverbalCue:** `ProximityClose`, `ProximityFar`, `EyeContact`, `BodyOrientation`
 * **EmotionalValence:** `Positive`, `Neutral`, `Negative`
-* **EngagementLevel:** uses ORO individuals (`engaged`, `engaging`, `disengaging`)
+* **EngagementLevel:** reuses ORO individuals (`engaged`, `engaging`, `disengaging`)
 
 ### **Agent Dimensions**
 
-* **SocialRole:** e.g., `PeerPeerRole`, `StrangerStrangerRole`
+* **SocialRole:** `PeerPeerRole`, `MasterSlaveRole`, `StrangerStrangerRole`
 * **SocialHierarchy:** `Dominant`, `Equal`, `Submissive`
 
 ---
 
 ## 🏠 3. Environment Instances
 
-Concrete places are modeled as **individuals**, not classes:
+R-SIT includes concrete **Location individuals** for common settings:
 
 * `KitchenEnvironment`
-* `CafeteriaEnvironment`
 * `LivingRoomEnvironment`
+* `CafeteriaEnvironment`
 * `CoworkingSpaceEnvironment`
 * `OfficeRoomEnvironment`
 * `MeetingRoomEnvironment`
@@ -64,7 +65,7 @@ Concrete places are modeled as **individuals**, not classes:
 * `StreetSidewalkEnvironment`
 * `PublicParkEnvironment`
 
-Each is annotated with:
+Each location is annotated with:
 
 ```ttl
 :hasPhysicalType Indoor/Outdoor
@@ -74,6 +75,8 @@ Each is annotated with:
 ---
 
 ## 🔗 4. Key Object Properties
+
+Relations used to describe a social situation:
 
 * `hasLocation`
 * `hasPhysicalType`

@@ -40,9 +40,6 @@
     rdfs:subClassOf :RSITDimension ;
     rdfs:label "Affective dimension" .
 
-:CommunicativeAspect a owl:Class ;
-    rdfs:label "Communicative aspect" .
-
 #################################################################
 # Core classes (main entities in the domain)
 #################################################################
@@ -228,7 +225,7 @@
 #################################################################
 
 :CommunicationMode a owl:Class ;
-    rdfs:subClassOf :SituationDimension , :CommunicativeAspect ;
+    rdfs:subClassOf :SituationDimension ;
     rdfs:label "Communication mode" .
 
 :VerbalCommunication a owl:Class ;
@@ -256,7 +253,7 @@
     rdfs:label "low_interdependence" .
 
 :NonverbalCue a owl:Class ;
-    rdfs:subClassOf :CommunicativeAspect ;
+    rdfs:subClassOf :SituationDimension ;
     rdfs:label "Nonverbal cue" .
 
 :ProximityClose a owl:Class ;
